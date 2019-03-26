@@ -1,6 +1,6 @@
 THRIFT = $(or $(shell which thrift), $(error "`thrift' executable missing"))
 REBAR = $(shell which rebar3 2>/dev/null || which ./rebar3)
-SUBMODULES = build_utils
+SUBMODULES = build_utils deps/msgpack
 SUBTARGETS = $(patsubst %,%/.git,$(SUBMODULES))
 
 UTILS_PATH := build_utils
