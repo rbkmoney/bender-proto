@@ -16,6 +16,7 @@ build('bender-proto', 'docker-host') {
     pipeDefault() {
 
         runStage('compile') {
+            sh "make submodules"
             sh "make wc_compile"
         }
 
