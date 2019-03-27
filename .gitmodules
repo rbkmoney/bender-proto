@@ -2,7 +2,3 @@
 	path = build_utils
 	url = git@github.com:rbkmoney/build_utils.git
 	branch = master
-[submodule "deps/msgpack"]
-	path = deps/msgpack
-	url = git@github.com:rbkmoney/msgpack-proto.git
-	branch = master

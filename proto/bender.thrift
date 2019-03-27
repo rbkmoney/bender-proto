@@ -1,7 +1,7 @@
 namespace java com.rbkmoney.bender
 namespace erlang bender
 
-include "../deps/msgpack/proto/msgpack.thrift"
+include "proto/msgpack.thrift"
 
 typedef string ExternalID
 typedef string InternalID
