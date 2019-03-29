@@ -29,6 +29,11 @@
             <version>LATEST</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>com.rbkmoney</groupId>
+            <artifactId>msgpack-proto</artifactId>
+            <version>LATEST</version>
+        </dependency>
     </dependencies>
 
     <build>
