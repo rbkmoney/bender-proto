@@ -6,7 +6,11 @@ include "proto/msgpack.thrift"
 typedef string ExternalID
 typedef string InternalID
 
+typedef string SequenceID
+typedef i64 SequenceValue
+
 exception InternalIDNotFound {}
+exception SequenceNotFound {}
 
 struct GenerationResult {
     1: required InternalID internal_id
@@ -32,15 +36,20 @@ struct ConstantSchema {
 }
 
 struct SequenceSchema {
-    1: required string sequence_id
-    2: optional i64 minimum
+    1: required SequenceID    sequence_id
+    2: optional SequenceValue minimum
 }
 
 service Bender {
 
     GenerationResult GenerateID (1: ExternalID external_id, 2: GenerationSchema schema, 3: msgpack.Value context)
 
-    GetInternalIDResult GetInternalID (1: ExternalID external_id) 
+    GetInternalIDResult GetInternalID (1: ExternalID external_id)
         throws (1: InternalIDNotFound ex1)
+
+    SequenceValue GetSequenceValue(1: SequenceID sequence_id)
+        throws (1: SequenceNotFound ex1)
+    void SetSequenceValue(1: SequenceID sequence_id, 2: SequenceValue value)
+        throws (1: SequenceNotFound ex1)
 
 }
