@@ -10,6 +10,7 @@ typedef string SequenceID
 typedef i64 SequenceValue
 
 exception InternalIDNotFound {}
+exception SequenceExists {}
 exception SequenceNotFound {}
 
 struct GenerationResult {
@@ -47,6 +48,8 @@ service Bender {
     GetInternalIDResult GetInternalID (1: ExternalID external_id)
         throws (1: InternalIDNotFound ex1)
 
+    void CreateSequence(1: SequenceID sequence_id)
+        throws (1: SequenceExists ex1)
     SequenceValue GetSequenceValue(1: SequenceID sequence_id)
         throws (1: SequenceNotFound ex1)
     void SetSequenceValue(1: SequenceID sequence_id, 2: SequenceValue value)
