@@ -19,7 +19,9 @@ union SequenceID {
 }
 
 exception InternalIDNotFound { }
-exception InvalidSequenceResultType {
+exception MissingSequenceResultType { }
+exception MissingSnowflakeResultType { }
+exception InvalidResultType {
     1: ResultType expected
 }
 
@@ -34,7 +36,9 @@ union GenerationSchema {
     3: SequenceSchema  sequence
 }
 
-struct SnowflakeSchema { }
+struct SnowflakeSchema {
+    1: optional ResultType result_type
+}
 
 struct ConstantSchema {
     1: required InternalID internal_id
@@ -65,7 +69,11 @@ service Transbender {
         2: GenerationSchema schema,
         3: msgpack.Value context,
     )
-        throws (1: InvalidSequenceResultType ex1)
+        throws (
+            1: MissingSequenceResultType ex1
+            2: MissingSnowflakeResultType ex2
+            3: InvalidResultType ex3
+        )
 
     GetInternalIDResult GetInternalID (
         1: ExternalID external_id
