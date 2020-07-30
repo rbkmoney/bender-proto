@@ -73,7 +73,7 @@ union ResultType {
     2: AsInteger as_integer
 }
 struct AsInteger { }
-string AsString  { }
+struct AsString  { }
 
 service Transbender {
 
