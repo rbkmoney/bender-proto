@@ -65,7 +65,6 @@ service Transbender {
 
     GetInternalIDResult GetInternalID (
         1: ExternalID external_id
-        2: ResultType result_type
     )
         throws (1: InternalIDNotFound ex1)
 }
