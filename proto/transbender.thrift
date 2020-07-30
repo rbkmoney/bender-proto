@@ -8,18 +8,20 @@ union ExternalID {
     2: i64    as_integer
 }
 
+union InternalID {
+    1: string as_string
+    2: i64    as_integer
+}
+
+union SequenceID {
+    1: string as_string
+    2: i64    as_integer
+}
+
 exception InternalIDNotFound { }
 
-union GenerationResult {
-    1: GenerationResultString  as_string
-    2: GenerationResultInteger as_integer
-}
-struct GenerationResultString {
-    1: required string internal_id
-    2: optional msgpack.Value context
-}
-struct GenerationResultInteger {
-    1: required i64 internal_id
+struct GenerationResult {
+    1: required InternalID internal_id
     2: optional msgpack.Value context
 }
 
@@ -31,40 +33,17 @@ union GenerationSchema {
 
 struct SnowflakeSchema { }
 
-union ConstantSchema {
-    1: ConstantSchemaString  as_string
-    2: ConstantSchemaInteger as_integer
-}
-struct ConstantSchemaString {
-    1: required string internal_id
-}
-struct ConstantSchemaInteger {
-    1: required i64    internal_id
+struct ConstantSchema {
+    1: required InternalID internal_id
 }
 
-union SequenceSchema {
-    1: SequenceSchemaString  as_string
-    2: SequenceSchemaInteger as_integer
-}
-struct SequenceSchemaString {
-    1: required string sequence_id
-    2: optional i64    minimum
-}
-struct SequenceSchemaInteger {
-    1: required i64 sequence_id
-    2: optional i64 minimum
+struct SequenceSchema {
+    1: required SequenceID sequence_id
+    2: optional i64        minimum
 }
 
-union GetInternalIDResult {
-    1: GetInternalIDResultString  as_string
-    2: GetInternalIDResultInteger as_integer
-}
-struct GetInternalIDResultString {
-    1: required string internal_id
-    2: required msgpack.Value context
-}
-struct GetInternalIDResultInteger {
-    1: required string internal_id
+struct GetInternalIDResult {
+    1: required InternalID internal_id
     2: required msgpack.Value context
 }
 
