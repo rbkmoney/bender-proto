@@ -19,6 +19,7 @@ union SequenceID {
 }
 
 exception InternalIDNotFound { }
+exception InvalidSequenceType { }
 
 struct GenerationResult {
     1: required InternalID internal_id
@@ -39,7 +40,8 @@ struct ConstantSchema {
 
 struct SequenceSchema {
     1: required SequenceID sequence_id
-    2: optional i64        minimum
+    2: required ResultType result_type
+    3: optional i64        minimum
 }
 
 struct GetInternalIDResult {
@@ -60,8 +62,8 @@ service Transbender {
         1: ExternalID external_id,
         2: GenerationSchema schema,
         3: msgpack.Value context,
-        4: ResultType result_type
     )
+        throws (1: InvalidSequenceType ex1)
 
     GetInternalIDResult GetInternalID (
         1: ExternalID external_id
