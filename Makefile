@@ -10,7 +10,7 @@ TEMPLATES_PATH := .
 SERVICE_NAME := bender_proto
 
 # Build image tag to be used
-BUILD_IMAGE_TAG := eee42f2ca018c313190bc350fe47d4dea70b6d27
+BUILD_IMAGE_TAG := 442c2c274c1d8e484e5213089906a4271641d95e
 CALL_ANYWHERE := \
 	all submodules rebar-update compile clean distclean \
 	java.compile java.deploy
