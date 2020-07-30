@@ -40,7 +40,6 @@ service Bender {
 
     GenerationResult GenerateID (1: ExternalID external_id, 2: GenerationSchema schema, 3: msgpack.Value context)
 
-    GetInternalIDResult GetInternalID (1: ExternalID external_id) 
+    GetInternalIDResult GetInternalID (1: ExternalID external_id)
         throws (1: InternalIDNotFound ex1)
-
 }
