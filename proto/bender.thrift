@@ -5,17 +5,20 @@ include "proto/msgpack.thrift"
 
 typedef string ExternalID
 typedef string InternalID
+typedef i64    IntegerInternalID
 
 exception InternalIDNotFound {}
 
 struct GenerationResult {
     1: required InternalID internal_id
     2: optional msgpack.Value context
+    3: optional IntegerInternalID integer_internal_id
 }
 
 struct GetInternalIDResult {
     1: required InternalID internal_id
     2: required msgpack.Value context
+    3: optional IntegerInternalID integer_internal_id
 }
 
 union GenerationSchema {
