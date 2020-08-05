@@ -32,7 +32,7 @@ submodules: $(SUBTARGETS)
 rebar-update:
 	$(REBAR) update
 
-compile: submodules
+compile: submodules rebar-update
 	$(REBAR) compile
 
 clean:
