@@ -46,7 +46,7 @@
         <dependency>
             <groupId>com.rbkmoney</groupId>
             <artifactId>msgpack-proto</artifactId>
-            <version>LATEST</version>
+            <version>1.6-2007307</version>
         </dependency>
     </dependencies>
 
