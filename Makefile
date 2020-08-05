@@ -12,8 +12,7 @@ SERVICE_NAME := bender_proto
 # Build image tag to be used
 BUILD_IMAGE_TAG := b04c5291d101132e53e578d96e1628d2e6dab0c0
 CALL_ANYWHERE := \
-	all submodules rebar-update compile clean distclean
-
+        all submodules rebar-update compile clean distclean
 CALL_W_CONTAINER := $(CALL_ANYWHERE)
 
 all: compile
@@ -32,7 +31,7 @@ submodules: $(SUBTARGETS)
 rebar-update:
 	$(REBAR) update
 
-compile: submodules
+compile: submodules rebar-update
 	$(REBAR) compile
 
 clean:
@@ -40,6 +39,6 @@ clean:
 
 distclean:
 	$(REBAR) clean -a
-	rm -rfv _build _builds _cache _steps _temp
+	rm -rfv _build
 
 include $(UTILS_PATH)/make_lib/java_proto.mk
