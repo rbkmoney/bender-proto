@@ -46,3 +46,8 @@ service Bender {
     GetInternalIDResult GetInternalID (1: ExternalID external_id)
         throws (1: InternalIDNotFound ex1)
 }
+
+service Generator {
+
+    GenerationResult GenerateID (1: GenerationSchema schema, 2: msgpack.Value context)
+}
