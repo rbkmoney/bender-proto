@@ -15,6 +15,11 @@ struct GenerationResult {
     3: optional IntegerInternalID integer_internal_id
 }
 
+struct GeneratedID {
+    1: required InternalID internal_id;
+    2: optional IntegerInternalID integer_internal_id
+}
+
 struct GetInternalIDResult {
     1: required InternalID internal_id
     2: required msgpack.Value context
@@ -49,5 +54,5 @@ service Bender {
 
 service Generator {
 
-    GenerationResult GenerateID (1: GenerationSchema schema)
+    GeneratedID GenerateID (1: GenerationSchema schema)
 }
