@@ -49,5 +49,5 @@ service Bender {
 
 service Generator {
 
-    GenerationResult GenerateID (1: GenerationSchema schema, 2: msgpack.Value context)
+    GenerationResult GenerateID (1: GenerationSchema schema)
 }
