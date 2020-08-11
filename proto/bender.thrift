@@ -16,8 +16,8 @@ struct GenerationResult {
 }
 
 struct GeneratedID {
-    1: required InternalID internal_id;
-    2: optional IntegerInternalID integer_internal_id
+    1: required InternalID id
+    2: optional IntegerInternalID integer_id
 }
 
 struct GetInternalIDResult {
